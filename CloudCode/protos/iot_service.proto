@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.iotservice";
+option java_outer_classname = "IoTServiceProto";
+option objc_class_prefix = "TEMP";
+
+package iot_service;
+
+// The temperature service definition.
+service IoTService {
+  // Responds with a temperature measurement
+  rpc SayTemperature (TemperatureRequest) returns (TemperatureReply) {}
+  
+  // Send a command to the led
+  rpc BlinkLed (LedRequest) returns (LedReply) {}
+}
+
+// The request message containing the user's name.
+message TemperatureRequest {
+  string sensorName = 1;
+}
+
+// The response message containing the greetings
+message TemperatureReply {
+  string temperature = 1;
+}
+
+message LedRequest {
+  uint32 state = 1;
+  string ledname =2;
+}
+
+message LedReply {
+  map<string, uint32> ledstate = 1;
+}
