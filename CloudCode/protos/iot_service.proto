@@ -14,6 +14,9 @@ service IoTService {
   
   // Send a command to the led
   rpc BlinkLed (LedRequest) returns (LedReply) {}
+
+  // Responds with the current reading of a given light sensor
+  rpc SayLightLevel (LightLevelRequest) returns (LightLevelReply) {}
 }
 
 // The request message containing the user's name.
@@ -33,4 +36,12 @@ message LedRequest {
 
 message LedReply {
   map<string, uint32> ledstate = 1;
+}
+
+message LightLevelRequest {
+  string sensorName = 1;
+}
+
+message LightLevelReply {
+  string lightLevel = 1;
 }

@@ -48,7 +48,7 @@ $ pip3 install kafka-python
 
 (Also if necessary, read this instructions to enable communication with the temperature sensore via GPIO: https://www.waveshare.com/wiki/Raspberry_Pi_Tutorial_Series:_1-Wire_DS18B20_Sensor)
 
-(Also if necessary, edit the const.py file with the address of the gRPC server -- server-2)
+(If necessary, edit the const.py file with the IP address of the Kafka Broker -- server-1)
 
 - Clone the repo:
 
