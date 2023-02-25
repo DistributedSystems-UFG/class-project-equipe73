@@ -30,7 +30,7 @@ def CreateUser(key):
     with grpc.insecure_channel(GRPC_SERVER+':'+GRPC_PORT) as channel:
         stub = iot_service_pb2_grpc.IoTServiceStub (channel)
         response = stub.CreateUser(iot_service_pb2.UserRequest(login=log,password=pas,access=acc,key=key))
-    print(response.status + '\n')
+    print(response.status)
 
 def LedBlink(key):
     print("insira estado e nome do led\n")
@@ -41,11 +41,11 @@ def LedBlink(key):
         response = stub.BlinkLed(iot_service_pb2.LedRequest(state=int(state),ledname=name,key = key))
 
     if response.status !='OK':
-        print(response.status + '\n')
+        print(response.status)
     elif response.ledstate[sys.argv[2]] == 1:
-        print("Led state is on" + '\n')
+        print("Led state is on")
     else:
-        print("Led state is off" + '\n')
+        print("Led state is off")
 
 def TempShow(key):
     while True:
@@ -54,9 +54,9 @@ def TempShow(key):
             stub = iot_service_pb2_grpc.IoTServiceStub(channel)
             response = stub.SayTemperature(iot_service_pb2.TemperatureRequest(key = key))
         if response.status !='OK':
-            print(response.status + '\n')
+            print(response.status)
             break
-        print("Temperature received: " + response.temperature + '\n')
+        print("Temperature received: " + response.temperature)
         if keyboard.is_pressed("x"):
             break
 
@@ -84,9 +84,9 @@ def run():
     if response.status != 'OK':
         print(response.status)
         return
-    print('Sucess logged with access' + response.access)
+    print('Sucess logged with access ' + str(response.access))
     while True:
-        showoptions(response.access)
+        options(response.access)
         at = int(input())
         match at:
             case 1:

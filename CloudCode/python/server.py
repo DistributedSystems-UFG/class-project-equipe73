@@ -73,7 +73,7 @@ def verify(key,needed):
     ta = [ t for t in TA if (t['key'] == key) ]
     if not ta:
         return 'Login Necessary'
-    if ta[access] > needed:
+    if ta[0]['access'] > needed:
         return 'Access Denied'
     return 'OK'
     
