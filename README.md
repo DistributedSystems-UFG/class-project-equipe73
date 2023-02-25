@@ -30,7 +30,7 @@ $ git clone https://github.com/professorfabio/SSU-2022_2-StarterProject.git
 
 $ cd CloudCode/python
 
-$ python3 -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/iot_service.proto
+$ python3 -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/iot_service.proto
 
 - Run virtual_device_service.py (it contains the cloud-based Consumer and Producer, and well as the gRPC service):
 

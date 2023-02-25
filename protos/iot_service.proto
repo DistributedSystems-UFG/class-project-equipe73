@@ -12,36 +12,62 @@ service IoTService {
   // Responds with a temperature measurement
   rpc SayTemperature (TemperatureRequest) returns (TemperatureReply) {}
   
+  rpc CreateUser (UserRequest) returns (StatusReply) {}
+
+  rpc UserLogin (LoginRequest) returns (LoginReply) {}
+
   // Send a command to the led
   rpc BlinkLed (LedRequest) returns (LedReply) {}
 
   // Responds with the current reading of a given light sensor
   rpc SayLightLevel (LightLevelRequest) returns (LightLevelReply) {}
 }
+message UserRequest {
+  string login = 1;
+  string password = 2;
+  uint32 access = 3;
+  uint32 key = 4;
+}
+message StatusReply {
+  string status = 1;
+}
+message LoginRequest {
+  string login = 1;
+  string password = 2;
+}
+message LoginReply {
+  string status = 1;
+  uint32 access = 2;
+  uint32 key = 3;
+}
 
 // The request message containing the user's name.
 message TemperatureRequest {
-  string sensorName = 1;
+  uint32 key = 1;
 }
 
 // The response message containing the greetings
 message TemperatureReply {
-  string temperature = 1;
+  string status = 1;
+  string temperature = 2;
 }
 
 message LedRequest {
   uint32 state = 1;
-  string ledname =2;
+  string ledname = 2;
+  uint32 key = 3;
 }
 
 message LedReply {
-  map<string, uint32> ledstate = 1;
+  string status = 1;
+  map<string, uint32> ledstate = 2;
 }
 
 message LightLevelRequest {
-  string sensorName = 1;
+  uint32 key = 1;
 }
 
 message LightLevelReply {
-  string lightLevel = 1;
+  string status = 1;
+  string lightLevel = 2;
 }
