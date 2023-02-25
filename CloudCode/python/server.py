@@ -25,12 +25,12 @@ DB=[
  {
  'login':'admin',
  'password':'admin',
- 'acess':1
+ 'access':1
  },
  {
  'login':'user',
  'password':'user',
- 'acess':2
+ 'access':2
  }]
 
 last_key = 1
