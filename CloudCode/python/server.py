@@ -87,7 +87,7 @@ class IoTServer(iot_service_pb2_grpc.IoTServiceServicer):
             'password':request.password,
             'access':request.access
         }
-        DB.append(dat)
+        DB.append(usr)
         return iot_service_pb2.StatusReply(status='OK')
     
     def UserLogin(self, request, context):

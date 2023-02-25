@@ -10,7 +10,7 @@ import iot_service_pb2_grpc
 from const import *
 
 import time
-import keyboard
+# from pynput import keyboard
 
 def options(access):
     if access == 1 :
@@ -26,7 +26,7 @@ def CreateUser(key):
     print("insira login, senha e acesso\n")
     log = input()
     pas = input()
-    acc = input()
+    acc = int(input())
     with grpc.insecure_channel(GRPC_SERVER+':'+GRPC_PORT) as channel:
         stub = iot_service_pb2_grpc.IoTServiceStub (channel)
         response = stub.CreateUser(iot_service_pb2.UserRequest(login=log,password=pas,access=acc,key=key))
@@ -57,8 +57,8 @@ def TempShow(key):
             print(response.status)
             break
         print("Temperature received: " + response.temperature)
-        if keyboard.is_pressed("x"):
-            break
+        # if keyboard.pressed("x"):
+        #     break
 
 def LightShow(key):
     while True:
@@ -71,8 +71,8 @@ def LightShow(key):
             break
         
         print("Light level received: " + response.lightLevel + "\n")
-        if keyboard.is_pressed("x"):
-            break
+        # if keyboard.pressed("x"):
+        #     break
             
 
 def run():
@@ -97,8 +97,8 @@ def run():
                 TempShow(response.key)
             case 4:
                 LightShow(response.key)
-        if keyboard.is_pressed("x"):
-            break
+        # if keyboard.pressed("x"):
+        #     break
 
 if __name__ == '__main__':
     logging.basicConfig()
