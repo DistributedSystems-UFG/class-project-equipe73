@@ -42,7 +42,7 @@ def LedBlink(key):
 
     if response.status !='OK':
         print(response.status)
-    elif response.ledstate[sys.argv[2]] == 1:
+    elif response.ledstate[name] == 1:
         print("Led state is on")
     else:
         print("Led state is off")
