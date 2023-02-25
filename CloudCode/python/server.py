@@ -91,6 +91,7 @@ class IoTServer(iot_service_pb2_grpc.IoTServiceServicer):
         return iot_service_pb2.StatusReply(status='OK')
     
     def UserLogin(self, request, context):
+        global last_key
         usr = [ us for us in DB if (us['login'] == request.login) ] 
         if not usr:
             return iot_service_pb2.LoginReply(status='User Doesnt Exists',key = -1,access = -1)
