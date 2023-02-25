@@ -40,9 +40,9 @@ last_key = 1
 #todos os proximos requests são feitos usando a chave como parametro.
 TA=[
     {
-        'key':1
-        'login':'admin'
-        'access':1
+        'key': 1,
+        'login':'admin',
+        'access': 1
     }
 ]
 
