@@ -102,11 +102,11 @@ class IoTServer(iot_service_pb2_grpc.IoTServiceServicer):
         last_key += 1
         ta = {
             'key':my_key,
-            'login':usr[0].login,
-            'access':usr[0].access
+            'login':usr[0]['login'],
+            'access':usr[0]['access']
         }
         TA.append(ta)
-        return iot_service_pb2.LoginReply(status='OK',key = my_key,access = usr[0].access)
+        return iot_service_pb2.LoginReply(status='OK',key = my_key,access = usr[0]['access'])
     
     def SayTemperature(self, request, context):
         ver = verify(request.key,temperature_access)
