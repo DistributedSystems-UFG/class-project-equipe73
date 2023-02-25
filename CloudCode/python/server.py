@@ -98,7 +98,7 @@ class IoTServer(iot_service_pb2_grpc.IoTServiceServicer):
         usr = [ us for us in usr if (us['password'] == request.password) ] 
         if not usr :
             return iot_service_pb2.LoginReply(status='Wrong Password',key = -1,access = -1)
-        mykey = last_key
+        my_key= last_key
         last_key += 1
         ta = {
             'key':my_key,
